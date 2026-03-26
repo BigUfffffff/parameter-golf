@@ -736,9 +736,76 @@ def main() -> None:
     zeropower_via_newtonschulz5 = torch.compile(zeropower_via_newtonschulz5)
 
     # -----------------------------
-    # DISTRIBUTED + CUDA SETUP
+    # DISTRIBUTED + CUDA SETUP(änderung auf CPU zum testen)
     # -----------------------------
+    distributed = "RANK" in os.environ and "WORLD_SIZE" in os.environ
+    rank = int(os.environ.get("RANK", "0"))
+    world_size = int(os.environ.get("WORLD_SIZE", "1"))
+    local_rank = int(os.environ.get("LOCAL_RANK", "0"))
+    if world_size <= 0:
+        raise ValueError(f"WORLD_SIZE must be positive, got {world_size}")
+    if 8 % world_size != 0:
+        raise ValueError(f"WORLD_SIZE={world_size} must divide 8 so grad_accum_steps stays integral")
+    grad_accum_steps = 8 // world_size
+    grad_scale = 1.0 / grad_accum_steps
+    
+    # --- ÄNDERUNGEN FÜR CPU STARTEN HIER ---
+    # Wir kommentieren den CUDA-Zwang aus:
+    # if not torch.cuda.is_available():
+    #     raise RuntimeError("CUDA is required")
+    
+    # Wir zwingen PyTorch auf die CPU:
+    device = torch.device("cpu")
+    # torch.cuda.set_device(device) # Das würde auf der CPU crashen, also weg damit.
+    
+    if distributed:
+        # 'nccl' ist das NVIDIA-Backend. Für CPUs müssen wir 'gloo' nutzen.
+        dist.init_process_group(backend="gloo")
+        dist.barrier()
+    master_process = rank == 0
 
+    # Fast math knobs (Dürfen bleiben, werden von der CPU einfach ignoriert)
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
+    from torch.backends.cuda import enable_cudnn_sdp, enable_flash_sdp, enable_math_sdp, enable_mem_efficient_sdp
+
+    # GANZ WICHTIG: Flash Attention funktioniert nur auf GPUs! 
+    # Für die CPU müssen wir den Standard (math_sdp) aktivieren.
+    enable_cudnn_sdp(False)
+    enable_flash_sdp(False) # Vorher True, jetzt False
+    enable_mem_efficient_sdp(False)
+    enable_math_sdp(True)   # Vorher False, jetzt True
+    # --- ÄNDERUNGEN FÜR CPU ENDEN HIER ---
+
+    logfile = None
+    if master_process:
+        os.makedirs("logs", exist_ok=True)
+        # args.run_id setzt voraus, dass 'args' vorher definiert wurde
+        logfile = f"logs/{args.run_id}.txt"
+        print(logfile)
+
+    def log0(msg: str, console: bool = True) -> None:
+        if not master_process:
+            return
+        if console:
+            print(msg)
+        if logfile is not None:
+            with open(logfile, "a", encoding="utf-8") as f:
+                print(msg, file=f)
+
+    log0(code, console=False)
+    log0("=" * 100, console=False)
+    log0(f"Running Python {sys.version}", console=False)
+    log0(f"Running PyTorch {torch.__version__}", console=False)
+    
+    # nvidia-smi wird auf deinem Rechner einen leeren String werfen, 
+    # aber check=False verhindert, dass das Skript hier abstürzt. Das kann also bleiben.
+    log0(
+        subprocess.run(["nvidia-smi"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=False).stdout,
+        console=False,
+    )
+    log0("=" * 100, console=False)
+    """
     distributed = "RANK" in os.environ and "WORLD_SIZE" in os.environ
     rank = int(os.environ.get("RANK", "0"))
     world_size = int(os.environ.get("WORLD_SIZE", "1"))
@@ -818,7 +885,7 @@ def main() -> None:
     log0(f"val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path={args.tokenizer_path}")
     log0(f"train_loader:dataset:{dataset_dir.name} train_shards:{actual_train_files}")
     log0(f"val_loader:shards pattern={args.val_files} tokens:{val_tokens.numel() - 1}")
-
+    """
     # -----------------------------
     # MODEL + OPTIMIZER SETUP
     # -----------------------------
