@@ -4,8 +4,8 @@ Allgemeine pläne:
 - Copilot Pro einrichten Beides
 - Automatisiertes ausführen am wochenende ermöglichen Julian
 - Runpod Rechenzeit beantragen nach ersten Tests Beide
-- openai Readme anschauen Simon
-- Md schön machen $\color{green}{\text{Julian}}$
+- openai Readme anschauen **$\color{red}{\text{Simon}}$**
+- Md schön machen **$\color{lime}{\text{Julian}}$**
 
 Wochenende 27-30.3 Julian
 - SwiGLU
