@@ -5,7 +5,7 @@ Allgemeine pläne:
 - Automatisiertes ausführen am wochenende ermöglichen Julian
 - Runpod Rechenzeit beantragen nach ersten Tests Beide
 - openai Readme anschauen Simon
-- Md schön machen Julian
+- Md schön machen $\color{green}{\text{Julian}}$
 
 Wochenende 27-30.3 Julian
 - SwiGLU
