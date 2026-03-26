@@ -13,6 +13,9 @@ Wochenende 27-30.3 Julian
 - RoPE Speicheroptimierung
 - Normal ohne änderungen
 - So viele Daten wie nur absolut möglich sammeln
+- Einmal Parrameter automatisert durchprobieren lassen z.B. Optuna
+- Ein agentic ansatz mit lokalem Model z.B. Lama
+- Ein agentic Ansatz mit hohem free Tier z.B. Google ai sutio oder grok
 
 Langfristige optimiereungen:
 - Muon
