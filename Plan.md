@@ -11,7 +11,7 @@ Wochenende 27-30.3
 - SwiGLU **$\color{lime}{\text{Julian}}$**
 - Cosine Decay statt linearem Warmdown **$\color{lime}{\text{Julian}}$**
 - RoPE Speicheroptimierung **$\color{lime}{\text{Julian}}$**
-- Normal ohne änderungen**$\color{lime}{\text{Julian}}$** 
+- Normal ohne änderungen **$\color{lime}{\text{Julian}}$** 
 - So viele Daten wie nur absolut möglich sammeln
 - Einmal Parrameter automatisert durchprobieren lassen z.B. Optuna
 - Ein agentic ansatz mit lokalem Model z.B. Lama kann unsicher sein und wegen RAM knallen
