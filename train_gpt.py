@@ -289,7 +289,7 @@ CONTROL_TENSOR_NAME_PATTERNS = tuple(
     pattern
     for pattern in os.environ.get(
         "CONTROL_TENSOR_NAME_PATTERNS",
-        "attn_scale,attn_scales,mlp_scale,mlp_scales,resid_mix,resid_mixes,q_gain,skip_weight,skip_weights",
+        "attn_scale,attn_scales,mlp_scale,mlp_scales,resid_mix,resid_mixes,q_gain,skip_weight,skip_weights,routing_weight,routing_weights,skip_gate",
     ).split(",")
     if pattern
 )
@@ -669,8 +669,16 @@ class GPT(nn.Module):
         self.tok_emb = nn.Embedding(vocab_size, model_dim)
         self.num_encoder_layers = num_layers // 2
         self.num_decoder_layers = num_layers - self.num_encoder_layers
-        self.num_skip_weights = min(self.num_encoder_layers, self.num_decoder_layers)
-        self.skip_weights = nn.Parameter(torch.ones(self.num_skip_weights, model_dim, dtype=torch.float32))
+        routing_init = torch.zeros(
+            self.num_decoder_layers,
+            self.num_encoder_layers,
+            dtype=torch.float32,
+        )
+        num_hard_links = min(self.num_encoder_layers, self.num_decoder_layers)
+        for i in range(num_hard_links):
+            routing_init[i, self.num_encoder_layers - 1 - i] = 5.0
+        self.routing_weights = nn.Parameter(routing_init)
+        self.skip_gate = nn.Parameter(torch.zeros((), dtype=torch.float32))
         self.blocks = nn.ModuleList(
             [
                 Block(
@@ -703,13 +711,20 @@ class GPT(nn.Module):
         x0 = x
         skips: list[Tensor] = []
 
-        # First half stores skips; second half reuses them in reverse order.
         for i in range(self.num_encoder_layers):
             x = self.blocks[i](x, x0)
             skips.append(x)
+
+        routed_context: Tensor | None = None
+        if self.num_encoder_layers > 0:
+            skip_stack = torch.stack(skips, dim=0)  # [enc, batch, seq, dim]
+            routing_probs = F.softmax(self.routing_weights.float(), dim=-1).to(dtype=x.dtype)
+            routed_context = torch.einsum("de,ebtc->dbtc", routing_probs, skip_stack)
+
+        gate = self.skip_gate.to(dtype=x.dtype)
         for i in range(self.num_decoder_layers):
-            if skips:
-                x = x + self.skip_weights[i].to(dtype=x.dtype)[None, None, :] * skips.pop()
+            if routed_context is not None:
+                x = x + gate * routed_context[i]
             x = self.blocks[self.num_encoder_layers + i](x, x0)
 
         x = self.final_norm(x).reshape(-1, x.size(-1))
@@ -859,8 +874,9 @@ def main() -> None:
         for name, p in block_named_params
         if p.ndim < 2 or any(pattern in name for pattern in CONTROL_TENSOR_NAME_PATTERNS)
     ]
-    if base_model.skip_weights.numel() > 0:
-        scalar_params.append(base_model.skip_weights)
+    if base_model.routing_weights.numel() > 0:
+        scalar_params.append(base_model.routing_weights)
+    scalar_params.append(base_model.skip_gate)
     token_lr = args.tied_embed_lr if args.tie_embeddings else args.embed_lr
     optimizer_tok = torch.optim.Adam(
         [{"params": [base_model.tok_emb.weight], "lr": token_lr, "base_lr": token_lr}],
@@ -953,7 +969,7 @@ def main() -> None:
             if args.warmup_steps <= 20 or (warmup_step + 1) % 10 == 0 or warmup_step + 1 == args.warmup_steps:
                 log0(f"warmup_step:{warmup_step + 1}/{args.warmup_steps}")
         base_model.load_state_dict(initial_model_state, strict=True)
-        for opt, state in zip(optimizers, initial_optimizer_states, strict=True):
+        for opt, state in zip(optimizers, initial_optimizer_states):
             opt.load_state_dict(state)
         zero_grad_all()
         if distributed:
