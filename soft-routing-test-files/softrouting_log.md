@@ -25,7 +25,7 @@
 - Next step: Retry Phase 2 with minimal warmup (`WARMUP_STEPS=1`) to initialize compile/runtime tensors before eval+train transition.
 
 ## Attempt 5
-- Hypothesis/Change made: Phase 2 rerun with same soft-routing architecture under cluster wallclock constraints.
+- Hypothesis/Change made: Phase 2 rerun with same soft-routing architecture under cluster wallclock constraints. Manually overwritten by user: default warmup steps (removed `WARMUP_STEPS=1`, change `#MAX_WALLCLOCK_SECONDS=600`). Manual change by user: set `#SBATCH --time=00:30:0`.
 - Test Phase: 2
 - Loss result or Error message: Passed. `step:250/500 val_loss:2.6805 val_bpb:1.5876`; later `step:399/500 val_loss:2.5504 val_bpb:1.5105`; no NaNs.
 - Next step: Finalize by committing soft-routing changes to git.
