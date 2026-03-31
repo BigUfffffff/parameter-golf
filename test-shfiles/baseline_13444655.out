@@ -1,0 +1,39 @@
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/199f2d9d-d9ab-4f4b-9c01-384173d21f40.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17059912
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:131072 train_seq_len:1024 iterations:100 warmup_steps:20 max_wallclock_seconds:600.000
+seed:1337
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+Traceback (most recent call last):
+  File "/scratch/s/S.Basten/parameter-golf/test-shfiles/../train_gpt.py", line 1126, in <module>
+    main()
+  File "/scratch/s/S.Basten/parameter-golf/test-shfiles/../train_gpt.py", line 956, in main
+    for opt, state in zip(optimizers, initial_optimizer_states, strict=True):
+TypeError: zip() takes no keyword arguments

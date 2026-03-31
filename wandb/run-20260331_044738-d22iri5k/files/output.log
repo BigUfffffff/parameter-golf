@@ -1,0 +1,100 @@
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/ff9ca0b5-0b8c-4875-99aa-65b609c4a8c6.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17057885
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:700 warmup_steps:20 max_wallclock_seconds:6000.000
+seed:1337
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning:
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning:
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning:
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning:
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning:
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning:
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+step:0/700 val_loss:6.9356 val_bpb:4.1077 train_time:0ms step_avg:0.02ms
+step:1/700 train_loss:6.9357 train_time:1486ms step_avg:1485.65ms
+step:2/700 train_loss:15.4794 train_time:2996ms step_avg:1498.20ms
+step:3/700 train_loss:7.5036 train_time:4508ms step_avg:1502.73ms
+step:4/700 train_loss:7.1433 train_time:6019ms step_avg:1504.75ms
+step:5/700 train_loss:7.4521 train_time:7531ms step_avg:1506.15ms
+step:6/700 train_loss:7.2613 train_time:9042ms step_avg:1507.08ms
+step:7/700 train_loss:6.6106 train_time:10555ms step_avg:1507.92ms
+step:8/700 train_loss:6.3060 train_time:12068ms step_avg:1508.51ms
+step:9/700 train_loss:6.1325 train_time:13580ms step_avg:1508.91ms
+step:10/700 train_loss:5.9470 train_time:15093ms step_avg:1509.34ms
+step:200/700 train_loss:2.7260 train_time:614513ms step_avg:3072.56ms
+step:250/700 val_loss:2.6715 val_bpb:1.5822 train_time:798176ms step_avg:3192.70ms
+step:400/700 train_loss:2.3683 train_time:1348443ms step_avg:3371.11ms
+step:500/700 val_loss:2.4750 val_bpb:1.4658 train_time:1715504ms step_avg:3431.01ms
+step:600/700 train_loss:2.4798 train_time:2082302ms step_avg:3470.50ms
+step:700/700 val_loss:2.3801 val_bpb:1.4096 train_time:2449138ms step_avg:3498.77ms
+peak memory allocated: 11275 MiB reserved: 11852 MiB
+Serialized model: 67217176 bytes
+Code size: 48544 bytes
+Total submission size: 67265720 bytes
+Serialized model int8+zlib: 13772917 bytes (payload:17170804 raw_torch:17216151 payload_ratio:3.91x)
+Total submission size int8+zlib: 13821461 bytes
+final_int8_zlib_roundtrip val_loss:2.3813 val_bpb:1.4104 eval_time:138366ms
+final_int8_zlib_roundtrip_exact val_loss:2.38134794 val_bpb:1.41036839

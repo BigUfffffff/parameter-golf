@@ -1,0 +1,10 @@
+usage: download_hf_docs_and_tokenize.py [-h] [--repo-id REPO_ID]
+                                        [--remote-root REMOTE_ROOT]
+                                        --output-root OUTPUT_ROOT
+                                        [--tokenizer-config TOKENIZER_CONFIG]
+                                        [--num-val-docs NUM_VAL_DOCS]
+                                        [--chunk-tokens CHUNK_TOKENS]
+                                        [--tokenizer-train-docs TOKENIZER_TRAIN_DOCS]
+                                        [--skip-byte]
+                                        [--reuse-sp-model VOCAB=MODEL]
+download_hf_docs_and_tokenize.py: error: the following arguments are required: --output-root

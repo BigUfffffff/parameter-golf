@@ -1,0 +1,15 @@
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/a543315d-ea89-4f46-ad5a-bce84db8fa61.txt
+Traceback (most recent call last):
+  File "/scratch/s/S.Basten/parameter-golf/test-shfiles/../train_gpt.py", line 1126, in <module>
+    main()
+  File "/scratch/s/S.Basten/parameter-golf/test-shfiles/../train_gpt.py", line 807, in main
+    sp = spm.SentencePieceProcessor(model_file=args.tokenizer_path)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/sentencepiece/__init__.py", line 468, in Init
+    self.Load(model_file=model_file, model_proto=model_proto)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/sentencepiece/__init__.py", line 961, in Load
+    return self.LoadFromFile(model_file)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/sentencepiece/__init__.py", line 316, in LoadFromFile
+    return _sentencepiece.SentencePieceProcessor_LoadFromFile(self, arg)
+OSError: Not found: "./data/tokenizers/fineweb_1024_bpe.model": No such file or directory Error #2

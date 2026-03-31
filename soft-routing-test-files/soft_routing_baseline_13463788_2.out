@@ -1,0 +1,90 @@
+Tue Mar 31 02:10:26 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.158.01             Driver Version: 570.158.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40-24Q                 On  |   00000000:00:10.0  On |                    0 |
+| N/A   N/A    P8            N/A  /  N/A  |      76MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            2385      G   /usr/libexec/Xorg                        74MiB |
++-----------------------------------------------------------------------------------------+
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from WANDB_API_KEY.
+wandb: Currently logged in as: simonbasten8 (simonbasten8-commits) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run um6ne8bq
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /scratch/s/S.Basten/parameter-golf/wandb/run-20260331_021029-um6ne8bq
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run baseline-92d5c2e5-1e6a-45ac-b482-4c0abbb1fdb2
+wandb: ⭐️ View project at https://wandb.ai/simonbasten8-commits/param-golf-soft-routing
+wandb: 🚀 View run at https://wandb.ai/simonbasten8-commits/param-golf-soft-routing/runs/um6ne8bq
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/e6a34cf7-7532-468d-9b1b-42b9e855a857.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17059912
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:700 warmup_steps:20 max_wallclock_seconds:6000.000
+seed:1337
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+step:0/700 val_loss:6.9357 val_bpb:4.1077 train_time:0ms step_avg:0.01ms
+step:1/700 train_loss:6.9357 train_time:1782ms step_avg:1781.70ms
+step:2/700 train_loss:16.7503 train_time:5162ms step_avg:2580.93ms
+step:3/700 train_loss:8.7589 train_time:8586ms step_avg:2862.14ms
+step:4/700 train_loss:6.5896 train_time:12016ms step_avg:3003.98ms
+step:5/700 train_loss:6.6520 train_time:15443ms step_avg:3088.57ms
+step:6/700 train_loss:6.6977 train_time:18870ms step_avg:3145.02ms
+step:7/700 train_loss:6.3331 train_time:22298ms step_avg:3185.42ms
+step:8/700 train_loss:6.1828 train_time:25725ms step_avg:3215.65ms
+step:9/700 train_loss:6.0838 train_time:29154ms step_avg:3239.34ms
+step:10/700 train_loss:5.9938 train_time:32580ms step_avg:3257.96ms
+step:200/700 train_loss:2.7974 train_time:686097ms step_avg:3430.49ms
+step:250/700 val_loss:2.7291 val_bpb:1.6163 train_time:858075ms step_avg:3432.30ms
+step:400/700 train_loss:2.3965 train_time:1373735ms step_avg:3434.34ms
+step:500/700 val_loss:2.4968 val_bpb:1.4787 train_time:1717321ms step_avg:3434.64ms
+step:600/700 train_loss:2.4994 train_time:2060995ms step_avg:3434.99ms
+step:700/700 val_loss:2.3993 val_bpb:1.4210 train_time:2404652ms step_avg:3435.22ms
+peak memory allocated: 10699 MiB reserved: 10764 MiB
+Serialized model: 67224983 bytes
+Code size: 47881 bytes
+Total submission size: 67272864 bytes
+Serialized model int8+zlib: 13846167 bytes (payload:17178912 raw_torch:17224025 payload_ratio:3.91x)
+Total submission size int8+zlib: 13894048 bytes
+final_int8_zlib_roundtrip val_loss:2.4006 val_bpb:1.4218 eval_time:131233ms
+final_int8_zlib_roundtrip_exact val_loss:2.40058294 val_bpb:1.42176044
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mbaseline-92d5c2e5-1e6a-45ac-b482-4c0abbb1fdb2[0m at: [34mhttps://wandb.ai/simonbasten8-commits/param-golf-soft-routing/runs/um6ne8bq[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20260331_021029-um6ne8bq/logs[0m

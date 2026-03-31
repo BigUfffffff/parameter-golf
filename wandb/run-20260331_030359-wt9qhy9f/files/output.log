@@ -1,0 +1,58 @@
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/9d464fb5-4991-4b20-8193-49fc75b3bf60.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17059912
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:700 warmup_steps:20 max_wallclock_seconds:6000.000
+seed:1337
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+step:0/700 val_loss:6.9357 val_bpb:4.1077 train_time:0ms step_avg:0.02ms
+step:1/700 train_loss:6.9357 train_time:3323ms step_avg:3323.11ms
+step:2/700 train_loss:16.7503 train_time:6719ms step_avg:3359.46ms
+step:3/700 train_loss:8.7590 train_time:10122ms step_avg:3374.12ms
+step:4/700 train_loss:6.5896 train_time:13527ms step_avg:3381.67ms
+step:5/700 train_loss:6.6522 train_time:16932ms step_avg:3386.40ms
+step:6/700 train_loss:6.6978 train_time:20338ms step_avg:3389.69ms
+step:7/700 train_loss:6.3332 train_time:23745ms step_avg:3392.09ms
+step:8/700 train_loss:6.1829 train_time:27150ms step_avg:3393.72ms
+step:9/700 train_loss:6.0838 train_time:30553ms step_avg:3394.78ms
+step:10/700 train_loss:5.9938 train_time:33961ms step_avg:3396.12ms
+step:200/700 train_loss:2.7943 train_time:676744ms step_avg:3383.72ms
+step:250/700 val_loss:2.7330 val_bpb:1.6186 train_time:848718ms step_avg:3394.87ms
+step:400/700 train_loss:2.3979 train_time:1363509ms step_avg:3408.77ms
+step:500/700 val_loss:2.4997 val_bpb:1.4805 train_time:1706816ms step_avg:3413.63ms
+step:600/700 train_loss:2.4965 train_time:2049576ms step_avg:3415.96ms
+step:700/700 val_loss:2.3999 val_bpb:1.4214 train_time:2393169ms step_avg:3418.81ms
+peak memory allocated: 10699 MiB reserved: 10764 MiB
+Serialized model: 67224983 bytes
+Code size: 47881 bytes
+Total submission size: 67272864 bytes
+Serialized model int8+zlib: 13849027 bytes (payload:17178912 raw_torch:17224025 payload_ratio:3.91x)
+Total submission size int8+zlib: 13896908 bytes
+final_int8_zlib_roundtrip val_loss:2.4009 val_bpb:1.4219 eval_time:131383ms
+final_int8_zlib_roundtrip_exact val_loss:2.40087397 val_bpb:1.42193280

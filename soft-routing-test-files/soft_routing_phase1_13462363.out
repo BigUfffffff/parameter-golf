@@ -1,0 +1,114 @@
+Mon Mar 30 17:34:43 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40                     On  |   00000000:01:00.0 Off |                    0 |
+|  0%   42C    P0             75W /  300W |    6001MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          836295      C   OpenGadget3                            5992MiB |
++-----------------------------------------------------------------------------------------+
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/89d37433-876a-4a24-8212-8393e7ee9734.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17057885
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:20 warmup_steps:20 max_wallclock_seconds:600.000
+seed:1337
+Traceback (most recent call last):
+  File "/scratch/s/S.Basten/parameter-golf/train_gpt.py", line 1142, in <module>
+    main()
+  File "/scratch/s/S.Basten/parameter-golf/train_gpt.py", line 964, in main
+    warmup_loss = model(x, y)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 375, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 736, in compile_wrapper
+    return fn(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/convert_frame.py", line 1495, in __call__
+    return self._torchdynamo_orig_callable(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/convert_frame.py", line 629, in __call__
+    return _compile(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/convert_frame.py", line 1111, in _compile
+    guarded_code = compile_inner(code, one_graph, hooks, transform)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_utils_internal.py", line 97, in wrapper_function
+    return function(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/convert_frame.py", line 793, in compile_inner
+    return _compile_inner(code, one_graph, hooks, transform)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/convert_frame.py", line 832, in _compile_inner
+    out_code = transform_code_object(code, transform)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/bytecode_transformation.py", line 1424, in transform_code_object
+    transformations(instructions, code_options)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/convert_frame.py", line 267, in _fn
+    return fn(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/convert_frame.py", line 753, in transform
+    tracer.run()
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 3497, in run
+    super().run()
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 1363, in run
+    while self.step():
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 1267, in step
+    self.dispatch_table[inst.opcode](self, inst)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 834, in wrapper
+    return inner_fn(self, inst)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 2177, in CALL_FUNCTION
+    self.call_function(fn, args, {})
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 1193, in call_function
+    self.push(fn.call_function(self, args, kwargs))  # type: ignore[arg-type]
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/variables/lazy.py", line 201, in realize_and_forward
+    return getattr(self.realize(), name)(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/variables/torch.py", line 1338, in call_function
+    tensor_variable = wrap_fx_proxy(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/variables/builder.py", line 2559, in wrap_fx_proxy
+    return wrap_fx_proxy_cls(target_cls=TensorVariable, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/variables/builder.py", line 2625, in wrap_fx_proxy_cls
+    return _wrap_fx_proxy(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/variables/builder.py", line 2723, in _wrap_fx_proxy
+    example_value = get_fake_value(proxy.node, tx, allow_non_graph_fake=True)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/utils.py", line 3355, in get_fake_value
+    raise TorchRuntimeError(str(e)).with_traceback(e.__traceback__) from None
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/utils.py", line 3253, in get_fake_value
+    ret_val = wrap_fake_exception(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/utils.py", line 2753, in wrap_fake_exception
+    return fn()
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/utils.py", line 3254, in <lambda>
+    lambda: run_node(tx.output, node, args, kwargs, nnmodule)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/utils.py", line 3462, in run_node
+    raise RuntimeError(make_error_message(e)).with_traceback(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/utils.py", line 3421, in run_node
+    return node.target(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/functional.py", line 422, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+torch._dynamo.exc.TorchRuntimeError: Dynamo failed to run FX node with fake tensors: call_function <function einsum at 0x14afd21d24c0>(*('de,ebtd->dbtd', FakeTensor(..., device='cuda:0', size=(5, 4), dtype=torch.bfloat16,
+           grad_fn=<ToCopyBackward0>), FakeTensor(..., device='cuda:0', size=(4, 64, 1024, 512), dtype=torch.bfloat16,
+           grad_fn=<StackBackward0>)), **{}): got RuntimeError('einsum(): output subscript d appears more than once in the output')
+
+from user code:
+   File "/scratch/s/S.Basten/parameter-golf/train_gpt.py", line 722, in forward
+    routed_context = torch.einsum("de,ebtd->dbtd", routing_probs, skip_stack)
+
+Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+

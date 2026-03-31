@@ -1,0 +1,132 @@
+Tue Mar 31 05:17:04 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.158.01             Driver Version: 570.158.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40-24Q                 On  |   00000000:00:10.0  On |                    0 |
+| N/A   N/A    P0            N/A  /  N/A  |      74MiB /  24576MiB |      4%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            2398      G   /usr/libexec/Xorg                        72MiB |
++-----------------------------------------------------------------------------------------+
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from WANDB_API_KEY.
+wandb: Currently logged in as: simonbasten8 (simonbasten8-commits) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run bh8dt7dq
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /scratch/s/S.Basten/parameter-golf/wandb/run-20260331_051714-bh8dt7dq
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run test-201a37ae-d520-4f23-a7b6-f6a96885c9e5
+wandb: ⭐️ View project at https://wandb.ai/simonbasten8-commits/param-golf-soft-routing
+wandb: 🚀 View run at https://wandb.ai/simonbasten8-commits/param-golf-soft-routing/runs/bh8dt7dq
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/7260f93f-27a9-4522-ba82-34d01af411ef.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17057885
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:700 warmup_steps:20 max_wallclock_seconds:6000.000
+seed:1337
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+step:0/700 val_loss:6.9356 val_bpb:4.1077 train_time:0ms step_avg:0.01ms
+step:1/700 train_loss:6.9357 train_time:1460ms step_avg:1459.99ms
+step:2/700 train_loss:15.4794 train_time:2948ms step_avg:1474.11ms
+step:3/700 train_loss:7.5036 train_time:4441ms step_avg:1480.30ms
+step:4/700 train_loss:7.1432 train_time:5934ms step_avg:1483.50ms
+step:5/700 train_loss:7.4521 train_time:7430ms step_avg:1485.94ms
+step:6/700 train_loss:7.2615 train_time:8924ms step_avg:1487.38ms
+step:7/700 train_loss:6.6109 train_time:10420ms step_avg:1488.58ms
+step:8/700 train_loss:6.3062 train_time:11915ms step_avg:1489.42ms
+step:9/700 train_loss:6.1325 train_time:13412ms step_avg:1490.17ms
+step:10/700 train_loss:5.9471 train_time:14907ms step_avg:1490.68ms
+step:200/700 train_loss:2.7377 train_time:300181ms step_avg:1500.90ms
+step:250/700 val_loss:2.6804 val_bpb:1.5875 train_time:375300ms step_avg:1501.20ms
+step:400/700 train_loss:2.3702 train_time:600695ms step_avg:1501.74ms
+step:500/700 val_loss:2.4759 val_bpb:1.4663 train_time:750880ms step_avg:1501.76ms
+step:600/700 train_loss:2.4821 train_time:901091ms step_avg:1501.82ms
+step:700/700 val_loss:2.3952 val_bpb:1.4186 train_time:1051174ms step_avg:1501.68ms
+peak memory allocated: 11275 MiB reserved: 11852 MiB
+Serialized model: 67217176 bytes
+Code size: 48544 bytes
+Total submission size: 67265720 bytes
+Serialized model int8+zlib: 13840745 bytes (payload:17170804 raw_torch:17216151 payload_ratio:3.91x)
+Total submission size int8+zlib: 13889289 bytes
+final_int8_zlib_roundtrip val_loss:2.3965 val_bpb:1.4193 eval_time:56064ms
+final_int8_zlib_roundtrip_exact val_loss:2.39645981 val_bpb:1.41931849
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtest-201a37ae-d520-4f23-a7b6-f6a96885c9e5[0m at: [34mhttps://wandb.ai/simonbasten8-commits/param-golf-soft-routing/runs/bh8dt7dq[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20260331_051714-bh8dt7dq/logs[0m

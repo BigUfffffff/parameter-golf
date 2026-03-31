@@ -1,0 +1,4 @@
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+/var/spool/slurmd/job13440023/slurm_script: line 19: 238028 Killed                  python ../train_gpt.py
+slurmstepd: error: Detected 1 oom_kill event in StepId=13440023.batch. Some of the step tasks have been OOM Killed.

@@ -1,0 +1,79 @@
+Tue Mar 31 00:16:06 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.158.01             Driver Version: 570.158.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40-8Q                  On  |   00000000:00:10.0  On |                    0 |
+| N/A   N/A    P8            N/A  /  N/A  |      71MiB /   8192MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            2113      G   /usr/libexec/Xorg                        70MiB |
++-----------------------------------------------------------------------------------------+
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/ac59e811-9dfc-4a06-a367-f2e0d98dc093.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17059912
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:10 warmup_steps:20 max_wallclock_seconds:600.000
+seed:1337
+Traceback (most recent call last):
+  File "/scratch/s/S.Basten/parameter-golf/train_gpt_baseline_vs.py", line 1126, in <module>
+    main()
+  File "/scratch/s/S.Basten/parameter-golf/train_gpt_baseline_vs.py", line 948, in main
+    warmup_loss = model(x, y)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 375, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 736, in compile_wrapper
+    return fn(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/train_gpt_baseline_vs.py", line 700, in forward
+    def forward(self, input_ids: Tensor, target_ids: Tensor) -> Tensor:
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 929, in _fn
+    return fn(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/aot_autograd.py", line 1241, in forward
+    return compiled_fn(full_args)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 370, in runtime_wrapper
+    all_outs = call_func_at_runtime_with_args(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/_aot_autograd/utils.py", line 100, in g
+    return f(*args)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/autograd/function.py", line 576, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 2074, in forward
+    fw_outs = call_func_at_runtime_with_args(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 556, in wrapper
+    return compiled_fn(runtime_args)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 750, in inner_fn
+    outs = compiled_fn(args)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/output_code.py", line 584, in __call__
+    return self.current_callable(inputs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/utils.py", line 2716, in run
+    out = model(new_inputs)
+  File "/scratch-local/slurm-job-tmp-13463555/torchinductor_s.basten/ea/cea3dgwqmgr66omk5d67sll4vlbqtmowrgijsbmi4pbvjy6tqjyx.py", line 2509, in call
+    buf234 = empty_strided_cuda((64, 1024, 512), (524288, 512, 1), torch.bfloat16)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 0 has a total capacity of 7.82 GiB of which 46.75 MiB is free. Including non-PyTorch memory, this process has 7.08 GiB memory in use. Of the allocated memory 6.75 GiB is allocated by PyTorch, and 10.53 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

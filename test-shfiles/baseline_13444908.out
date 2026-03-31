@@ -1,0 +1,53 @@
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/5a4a2814-397e-452a-aaef-a93cf37efd7f.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17059912
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:100 warmup_steps:20 max_wallclock_seconds:600.000
+seed:1337
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+step:0/100 val_loss:6.9357 val_bpb:4.1077 train_time:0ms step_avg:0.02ms
+step:1/100 train_loss:6.9357 train_time:1358ms step_avg:1357.68ms
+step:2/100 train_loss:16.7503 train_time:2744ms step_avg:1372.19ms
+step:3/100 train_loss:12.7226 train_time:4133ms step_avg:1377.53ms
+step:4/100 train_loss:9.0574 train_time:5525ms step_avg:1381.25ms
+step:5/100 train_loss:6.9191 train_time:6919ms step_avg:1383.81ms
+step:6/100 train_loss:6.1801 train_time:8312ms step_avg:1385.40ms
+step:7/100 train_loss:5.8877 train_time:9706ms step_avg:1386.62ms
+step:8/100 train_loss:5.8582 train_time:11100ms step_avg:1387.50ms
+step:9/100 train_loss:5.8426 train_time:12496ms step_avg:1388.39ms
+step:10/100 train_loss:5.8509 train_time:13890ms step_avg:1388.97ms
+step:100/100 val_loss:3.4799 val_bpb:2.0610 train_time:139719ms step_avg:1397.19ms
+peak memory allocated: 10699 MiB reserved: 10764 MiB
+Serialized model: 67224983 bytes
+Code size: 47673 bytes
+Total submission size: 67272656 bytes
+Serialized model int8+zlib: 8585455 bytes (payload:17178912 raw_torch:17224025 payload_ratio:3.91x)
+Total submission size int8+zlib: 8633128 bytes
+final_int8_zlib_roundtrip val_loss:3.4940 val_bpb:2.0693 eval_time:53133ms
+final_int8_zlib_roundtrip_exact val_loss:3.49398624 val_bpb:2.06933546

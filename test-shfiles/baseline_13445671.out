@@ -1,0 +1,73 @@
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/c4da378f-224e-4419-a3e1-afded386ca4a.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17059912
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:10 warmup_steps:20 max_wallclock_seconds:600.000
+seed:1337
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+step:0/10 val_loss:6.9357 val_bpb:4.1077 train_time:0ms step_avg:0.01ms
+step:1/10 train_loss:6.9357 train_time:3265ms step_avg:3264.84ms
+step:2/10 train_loss:16.7503 train_time:6577ms step_avg:3288.65ms
+step:3/10 train_loss:15.0159 train_time:9889ms step_avg:3296.40ms
+step:4/10 train_loss:12.9758 train_time:13199ms step_avg:3299.63ms
+step:5/10 train_loss:10.9754 train_time:16517ms step_avg:3303.35ms
+step:6/10 train_loss:9.2211 train_time:19848ms step_avg:3307.93ms
+step:7/10 train_loss:7.8511 train_time:23173ms step_avg:3310.50ms
+step:8/10 train_loss:6.9968 train_time:26495ms step_avg:3311.89ms
+step:9/10 train_loss:6.4238 train_time:29818ms step_avg:3313.13ms
+step:10/10 train_loss:6.0981 train_time:33132ms step_avg:3313.21ms
+step:10/10 val_loss:5.8998 val_bpb:3.4942 train_time:33145ms step_avg:3314.54ms
+peak memory allocated: 10699 MiB reserved: 10764 MiB
+Serialized model: 67224983 bytes
+Code size: 47673 bytes
+Total submission size: 67272656 bytes
+Serialized model int8+zlib: 5292802 bytes (payload:17178912 raw_torch:17224025 payload_ratio:3.91x)
+Total submission size int8+zlib: 5340475 bytes
+final_int8_zlib_roundtrip val_loss:6.0210 val_bpb:3.5660 eval_time:108530ms
+final_int8_zlib_roundtrip_exact val_loss:6.02103955 val_bpb:3.56599877
+Sun Mar 29 15:25:37 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.158.01             Driver Version: 570.158.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40-24Q                 On  |   00000000:00:10.0  On |                    0 |
+| N/A   N/A    P0            N/A  /  N/A  |      72MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            2385      G   /usr/libexec/Xorg                        70MiB |
++-----------------------------------------------------------------------------------------+

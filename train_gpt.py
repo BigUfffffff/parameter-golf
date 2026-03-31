@@ -27,6 +27,10 @@ import torch.nn.functional as F
 from torch import Tensor, nn
 from torch.nn.parallel import DistributedDataParallel as DDP
 
+import wandb
+
+wandb.init(project="param-golf-soft-routing", name=f"test-{uuid.uuid4()}")
+
 # -----------------------------
 # HYPERPARAMETERS
 # -----------------------------
@@ -1009,6 +1013,7 @@ def main() -> None:
                 f"step:{step}/{args.iterations} val_loss:{val_loss:.4f} val_bpb:{val_bpb:.4f} "
                 f"train_time:{training_time_ms:.0f}ms step_avg:{training_time_ms / max(step, 1):.2f}ms"
             )
+            wandb.log({"val_loss": val_loss, "val_bpb": val_bpb, "training_time_ms": training_time_ms}, step=step)
             torch.cuda.synchronize()
             t0 = time.perf_counter()
 

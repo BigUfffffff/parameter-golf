@@ -1,0 +1,116 @@
+Tue Mar 31 00:42:21 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.158.01             Driver Version: 570.158.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40-16Q                 On  |   00000000:00:10.0  On |                    0 |
+| N/A   N/A    P0            N/A  /  N/A  |      72MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            1906      G   /usr/libexec/Xorg                        71MiB |
++-----------------------------------------------------------------------------------------+
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/14113334-a0f8-4709-bc89-8a143d8513de.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17057885
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:500 warmup_steps:20 max_wallclock_seconds:600.000
+seed:1337
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/torch/_inductor/lowering.py:7095: UserWarning: 
+Online softmax is disabled on the fly since Inductor decides to
+split the reduction. Cut an issue to PyTorch if this is an
+important use case and you want to speed it up with online
+softmax.
+
+  warnings.warn(
+step:0/500 val_loss:6.9356 val_bpb:4.1077 train_time:0ms step_avg:0.01ms
+step:1/500 train_loss:6.9357 train_time:3591ms step_avg:3590.62ms
+step:2/500 train_loss:15.4794 train_time:7243ms step_avg:3621.37ms
+step:3/500 train_loss:13.7201 train_time:10904ms step_avg:3634.51ms
+step:4/500 train_loss:11.7260 train_time:14560ms step_avg:3640.02ms
+step:5/500 train_loss:9.8212 train_time:18217ms step_avg:3643.34ms
+step:6/500 train_loss:8.2635 train_time:21877ms step_avg:3646.15ms
+step:7/500 train_loss:7.1266 train_time:25539ms step_avg:3648.46ms
+step:8/500 train_loss:6.4886 train_time:29195ms step_avg:3649.42ms
+step:9/500 train_loss:6.1037 train_time:32851ms step_avg:3650.11ms
+step:10/500 train_loss:5.9154 train_time:36505ms step_avg:3650.49ms
+step:165/500 val_loss:3.6532 val_bpb:2.1637 train_time:602846ms step_avg:3653.61ms
+stopping_early: wallclock_cap train_time:602846ms step:165/500
+peak memory allocated: 11275 MiB reserved: 11852 MiB
+Serialized model: 67217176 bytes
+Code size: 48339 bytes
+Total submission size: 67265515 bytes
+Serialized model int8+zlib: 6971419 bytes (payload:17170804 raw_torch:17216151 payload_ratio:3.91x)
+Total submission size int8+zlib: 7019758 bytes
+final_int8_zlib_roundtrip val_loss:3.7076 val_bpb:2.1958 eval_time:88624ms
+final_int8_zlib_roundtrip_exact val_loss:3.70755266 val_bpb:2.19582152

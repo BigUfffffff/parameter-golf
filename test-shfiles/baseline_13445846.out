@@ -1,0 +1,73 @@
+Sun Mar 29 15:45:04 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.158.01             Driver Version: 570.158.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40-24Q                 On  |   00000000:00:10.0  On |                    0 |
+| N/A   N/A    P8            N/A  /  N/A  |      72MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            1736      G   /usr/libexec/Xorg                        71MiB |
++-----------------------------------------------------------------------------------------+
+/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/networkx/utils/backends.py:135: RuntimeWarning: networkx backend defined more than once: nx-loopback
+  backends.update(_get_backends("networkx.backends"))
+logs/d3f14d14-d3ab-4f4d-9d12-454cf45c1e4d.txt
+val_bpb:enabled tokenizer_kind=sentencepiece tokenizer_path=/scratch/s/S.Basten/parameter-golf/data/tokenizers/fineweb_1024_bpe.model
+train_loader:dataset:fineweb10B_sp1024 train_shards:80
+val_loader:shards pattern=/scratch/s/S.Basten/parameter-golf/data/datasets/fineweb10B_sp1024/fineweb_val_*.bin tokens:62021632
+model_params:17059912
+world_size:1 grad_accum_steps:8
+sdp_backends:cudnn=False flash=True mem_efficient=False math=False
+attention_mode:gqa num_heads:8 num_kv_heads:4
+tie_embeddings:True embed_lr:0.05 head_lr:0.0 matrix_lr:0.04 scalar_lr:0.04
+train_batch_tokens:524288 train_seq_len:1024 iterations:10 warmup_steps:20 max_wallclock_seconds:600.000
+seed:1337
+warmup_step:1/20
+warmup_step:2/20
+warmup_step:3/20
+warmup_step:4/20
+warmup_step:5/20
+warmup_step:6/20
+warmup_step:7/20
+warmup_step:8/20
+warmup_step:9/20
+warmup_step:10/20
+warmup_step:11/20
+warmup_step:12/20
+warmup_step:13/20
+warmup_step:14/20
+warmup_step:15/20
+warmup_step:16/20
+warmup_step:17/20
+warmup_step:18/20
+warmup_step:19/20
+warmup_step:20/20
+step:0/10 val_loss:6.9357 val_bpb:4.1077 train_time:0ms step_avg:0.01ms
+step:1/10 train_loss:6.9357 train_time:1373ms step_avg:1373.32ms
+step:2/10 train_loss:16.7503 train_time:2784ms step_avg:1391.97ms
+step:3/10 train_loss:12.7632 train_time:4197ms step_avg:1399.09ms
+step:4/10 train_loss:9.1189 train_time:5611ms step_avg:1402.64ms
+step:5/10 train_loss:6.9610 train_time:7027ms step_avg:1405.44ms
+step:6/10 train_loss:6.1944 train_time:8442ms step_avg:1406.97ms
+step:7/10 train_loss:5.8885 train_time:9869ms step_avg:1409.85ms
+step:8/10 train_loss:5.8561 train_time:11283ms step_avg:1410.43ms
+step:9/10 train_loss:5.8381 train_time:12702ms step_avg:1411.33ms
+step:10/10 train_loss:5.8466 train_time:14122ms step_avg:1412.20ms
+step:10/10 val_loss:5.8090 val_bpb:3.4404 train_time:14125ms step_avg:1412.46ms
+peak memory allocated: 10699 MiB reserved: 10764 MiB
+Serialized model: 67224983 bytes
+Code size: 47673 bytes
+Total submission size: 67272656 bytes
+Serialized model int8+zlib: 5951642 bytes (payload:17178912 raw_torch:17224025 payload_ratio:3.91x)
+Total submission size int8+zlib: 5999315 bytes
+final_int8_zlib_roundtrip val_loss:5.7952 val_bpb:3.4323 eval_time:53519ms
+final_int8_zlib_roundtrip_exact val_loss:5.79521650 val_bpb:3.43225364

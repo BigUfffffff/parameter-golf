@@ -1,0 +1,26 @@
+/var/spool/slurmd/job13436966/slurm_script: line 8: .venv/bin/activate: No such file or directory
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Traceback (most recent call last):
+  File "/scratch/s/S.Basten/parameter-golf/data-prep/../data/cached_challenge_fineweb.py", line 157, in <module>
+    main()
+  File "/scratch/s/S.Basten/parameter-golf/data-prep/../data/cached_challenge_fineweb.py", line 127, in main
+    manifest = load_manifest(skip_manifest_download=args.skip_manifest)
+  File "/scratch/s/S.Basten/parameter-golf/data-prep/../data/cached_challenge_fineweb.py", line 72, in load_manifest
+    get(f"{REMOTE_ROOT_PREFIX}/manifest.json")
+  File "/scratch/s/S.Basten/parameter-golf/data-prep/../data/cached_challenge_fineweb.py", line 44, in get
+    hf_hub_download(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/huggingface_hub/file_download.py", line 986, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/huggingface_hub/file_download.py", line 1201, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+  File "/usr/lib64/python3.9/contextlib.py", line 119, in __enter__
+    return next(self.gen)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/huggingface_hub/utils/_fixes.py", line 101, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/filelock/_api.py", line 332, in acquire
+    self._acquire()
+  File "/scratch/s/S.Basten/parameter-golf/.venv/lib64/python3.9/site-packages/filelock/_unix.py", line 44, in _acquire
+    fd = os.open(self.lock_file, open_flags, self._context.mode)
+OSError: [Errno 122] Disk quota exceeded: '/home/s/S.Basten/.cache/huggingface/hub/.locks/datasets--willdepueoai--parameter-golf/4f5ae3113366f06b4ca0f005f0afabaef0d2da01.lock'
